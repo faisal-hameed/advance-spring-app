@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -39,6 +40,7 @@ public class PermissionEntity {
 	@Column(name = "menu_path")
 	private String menuPath;
 
+	@ManyToMany(mappedBy = "permissions")
 	private List<RoleEntity> roles;
 
 	@Override

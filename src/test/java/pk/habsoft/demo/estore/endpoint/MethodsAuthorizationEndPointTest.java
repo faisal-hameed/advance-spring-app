@@ -4,10 +4,10 @@ import static org.springframework.security.test.web.servlet.response.SecurityMoc
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static pk.habsoft.demo.estore.endpoint.Endpoints.MethodAuthorization.ADMIN_PAGE;
-import static pk.habsoft.demo.estore.endpoint.Endpoints.MethodAuthorization.BASE_URL;
-import static pk.habsoft.demo.estore.endpoint.Endpoints.MethodAuthorization.COMMON_PAGE;
-import static pk.habsoft.demo.estore.endpoint.Endpoints.MethodAuthorization.USER_PAGE;
+import static pk.habsoft.demo.estore.controller.Endpoints.MethodAuthorization.ADMIN_PAGE;
+import static pk.habsoft.demo.estore.controller.Endpoints.MethodAuthorization.BASE_URL;
+import static pk.habsoft.demo.estore.controller.Endpoints.MethodAuthorization.COMMON_PAGE;
+import static pk.habsoft.demo.estore.controller.Endpoints.MethodAuthorization.USER_PAGE;
 
 import org.junit.Before;
 import org.junit.Test;

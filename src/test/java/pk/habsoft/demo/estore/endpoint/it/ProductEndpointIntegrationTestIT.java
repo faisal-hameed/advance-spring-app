@@ -5,9 +5,9 @@ import static org.springframework.security.test.web.servlet.response.SecurityMoc
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static pk.habsoft.demo.estore.endpoint.Endpoints.ProductEndpoint.BASE_URL;
-import static pk.habsoft.demo.estore.endpoint.Endpoints.ProductEndpoint.GET_ALL_PRODUCTS;
-import static pk.habsoft.demo.estore.endpoint.Endpoints.ProductEndpoint.GET_BY_ID;
+import static pk.habsoft.demo.estore.controller.Endpoints.ProductEndpoint.BASE_URL;
+import static pk.habsoft.demo.estore.controller.Endpoints.ProductEndpoint.GET_ALL_PRODUCTS;
+import static pk.habsoft.demo.estore.controller.Endpoints.ProductEndpoint.GET_BY_ID;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -26,7 +26,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import pk.habsoft.demo.estore.MainApplication;
-import pk.habsoft.demo.estore.service.impl.AppUserDetailsServiceImpl;
+import pk.habsoft.demo.estore.service.AppUserDetailsService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MainApplication.class)
@@ -43,7 +43,7 @@ public class ProductEndpointIntegrationTestIT {
     private MockMvc mvc;
 
     @Autowired
-    private AppUserDetailsServiceImpl userDetailsService;
+    private AppUserDetailsService userDetailsService;
 
     @Before
     public void setUp() {

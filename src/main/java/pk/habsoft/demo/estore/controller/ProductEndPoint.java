@@ -1,4 +1,4 @@
-package pk.habsoft.demo.estore.endpoint;
+package pk.habsoft.demo.estore.controller;
 
 import java.util.List;
 

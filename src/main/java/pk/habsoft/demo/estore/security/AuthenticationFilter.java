@@ -24,8 +24,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Strings;
 
+import pk.habsoft.demo.estore.controller.Endpoints;
 import pk.habsoft.demo.estore.dto.LoginRequest;
-import pk.habsoft.demo.estore.endpoint.Endpoints;
 
 public class AuthenticationFilter extends OncePerRequestFilter {
 

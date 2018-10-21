@@ -39,9 +39,9 @@ public class InitialDataLoader implements ApplicationRunner {
 	private ModelMapper mapper;
 
 	@Autowired
-	RoleDao roleDao;
-	@Autowired
 	UserDao userDao;
+	@Autowired
+	RoleDao roleDao;
 	// @Autowired
 	// UserRoleDao userRoleDao;
 

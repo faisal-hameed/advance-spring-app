@@ -10,16 +10,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MainApplication {
 
-    private static final Logger LOG = Logger.getLogger(MainApplication.class);
+	private static final Logger LOG = Logger.getLogger(MainApplication.class);
 
-    /**
-     * The main method.
-     *
-     * @param args
-     *            the arguments
-     */
-    public static void main(String[] args) {
-        LOG.info("Welcome to EStore App console");
-        SpringApplication.run(MainApplication.class, args);
-    }
+	/**
+	 * The main method.
+	 *
+	 * @param args
+	 *            the arguments
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(MainApplication.class, args);
+	}
 }

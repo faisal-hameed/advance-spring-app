@@ -1,4 +1,4 @@
-package pk.habsoft.demo.estore.endpoint;
+package pk.habsoft.demo.estore.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
