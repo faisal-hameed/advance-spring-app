@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import pk.habsoft.demo.estore.ResponseBuilder;
+import pk.habsoft.demo.estore.core.ResponseBuilder;
 
 /**
  * The Class is responsible to catch all kinds of exceptions raised from all

@@ -1,4 +1,4 @@
-package pk.habsoft.demo.estore;
+package pk.habsoft.demo.estore.core;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

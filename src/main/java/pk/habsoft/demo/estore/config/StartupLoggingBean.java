@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Lists;
 
-import pk.habsoft.demo.estore.controller.Endpoints;
+import pk.habsoft.demo.estore.core.Endpoints;
 import pk.habsoft.demo.estore.security.AccountAuthenticationProvider;
 
 @Component

@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import pk.habsoft.demo.estore.core.Endpoints;
+
 @RestController
 @RequestMapping(value = Endpoints.MethodAuthorization.BASE_URL)
 public class MethodAuthorizationEndPoint {

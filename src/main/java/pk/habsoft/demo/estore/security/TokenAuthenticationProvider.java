@@ -7,15 +7,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 
-import pk.habsoft.demo.estore.service.TokenService;
+import pk.habsoft.demo.estore.service.AuthTokenService;
 
 public class TokenAuthenticationProvider implements AuthenticationProvider {
 
     private static final Logger LOGGER = Logger.getLogger(TokenAuthenticationProvider.class);
 
-    private TokenService tokenService;
+    private AuthTokenService tokenService;
 
-    public TokenAuthenticationProvider(TokenService tokenService) {
+    public TokenAuthenticationProvider(AuthTokenService tokenService) {
         this.tokenService = tokenService;
     }
 

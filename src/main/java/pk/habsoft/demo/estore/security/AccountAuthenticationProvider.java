@@ -8,19 +8,20 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 
+import pk.habsoft.demo.estore.db.entity.UserEntity;
 import pk.habsoft.demo.estore.service.AppUserDetailsService;
-import pk.habsoft.demo.estore.service.TokenService;
+import pk.habsoft.demo.estore.service.AuthTokenService;
 
 public class AccountAuthenticationProvider implements AuthenticationProvider {
 
     private static final Logger LOGGER = Logger.getLogger(AccountAuthenticationProvider.class);
 
-    private TokenService tokenService;
+    private AuthTokenService tokenService;
 
     @Autowired
     private AppUserDetailsService userDetailsService;
 
-    public AccountAuthenticationProvider(TokenService tokenService) {
+    public AccountAuthenticationProvider(AuthTokenService tokenService) {
         super();
         this.tokenService = tokenService;
     }
@@ -35,10 +36,11 @@ public class AccountAuthenticationProvider implements AuthenticationProvider {
             throw new BadCredentialsException("Credentials not provided");
         }
 
-        UsernamePasswordAuthenticationToken authWithToken = (UsernamePasswordAuthenticationToken) userDetailsService
-                .authenticate(user.toString(), password.toString());
+        AuthenticationWithToken authWithToken = userDetailsService.authenticate(user.toString(), password.toString());
 
-        String token = tokenService.generateNewToken();
+        final UserEntity userDetails = authWithToken.getJwtUser();
+
+        String token = tokenService.generateToken(userDetails, null);
         authWithToken.setDetails(token);
 
         // Save token in cache for subsequent authentication

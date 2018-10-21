@@ -14,12 +14,13 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ResponseHeader;
+import pk.habsoft.demo.estore.core.Endpoints;
 import pk.habsoft.demo.estore.dto.ProductDTO;
 import pk.habsoft.demo.estore.service.ProductService;
 
 @Api("products")
 @RestController
-@RequestMapping(Endpoints.ProductEndpoint.BASE_URL)
+@RequestMapping(Endpoints.ProductEndpoint.BASE_URI)
 public class ProductEndPoint {
 
     @Autowired

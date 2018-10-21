@@ -18,11 +18,11 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Component;
 
-import pk.habsoft.demo.estore.controller.Endpoints;
+import pk.habsoft.demo.estore.core.Endpoints;
 import pk.habsoft.demo.estore.security.AccountAuthenticationProvider;
 import pk.habsoft.demo.estore.security.AuthenticationFilter;
 import pk.habsoft.demo.estore.security.TokenAuthenticationProvider;
-import pk.habsoft.demo.estore.service.TokenService;
+import pk.habsoft.demo.estore.service.AuthTokenService;
 
 @Component
 @EnableWebSecurity()
@@ -61,6 +61,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security",
 						"/swagger-ui.html", "/webjars/**", "/swagger-resources/configuration/ui").permitAll()
 				.antMatchers(Endpoints.Test.BASE_URL).permitAll()
+				.antMatchers(Endpoints.Common.BASE_URI+"/*").permitAll()
+				.antMatchers(Endpoints.ProductEndpoint.BASE_URI+"/*").permitAll()
+				.antMatchers(Endpoints.User.BASE_URI+Endpoints.User.CREATE_USER).permitAll()
 				.anyRequest().authenticated()
 				// .and()
 				// .httpBasic()
@@ -100,7 +103,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public TokenService tokenService() {
-        return new TokenService();
+    public AuthTokenService tokenService() {
+        return new AuthTokenService();
     }
 }

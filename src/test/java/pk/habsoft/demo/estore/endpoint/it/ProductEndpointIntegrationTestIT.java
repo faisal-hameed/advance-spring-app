@@ -5,9 +5,9 @@ import static org.springframework.security.test.web.servlet.response.SecurityMoc
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static pk.habsoft.demo.estore.controller.Endpoints.ProductEndpoint.BASE_URL;
-import static pk.habsoft.demo.estore.controller.Endpoints.ProductEndpoint.GET_ALL_PRODUCTS;
-import static pk.habsoft.demo.estore.controller.Endpoints.ProductEndpoint.GET_BY_ID;
+import static pk.habsoft.demo.estore.core.Endpoints.ProductEndpoint.BASE_URI;
+import static pk.habsoft.demo.estore.core.Endpoints.ProductEndpoint.GET_ALL_PRODUCTS;
+import static pk.habsoft.demo.estore.core.Endpoints.ProductEndpoint.GET_BY_ID;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -54,7 +54,7 @@ public class ProductEndpointIntegrationTestIT {
 
     @Test
     public void test_get_all_products_unauthrized() throws Exception {
-        mvc.perform(get(BASE_URL + GET_ALL_PRODUCTS))
+        mvc.perform(get(BASE_URI + GET_ALL_PRODUCTS))
                 // Status should be 401
                 .andExpect(status().isUnauthorized());
     }
@@ -62,7 +62,7 @@ public class ProductEndpointIntegrationTestIT {
     @Test
     public void test_get_all_products() throws Exception {
         UserDetails userDetails = userDetailsService.loadUserByUsername("user");
-        mvc.perform(get(BASE_URL + GET_ALL_PRODUCTS)
+        mvc.perform(get(BASE_URI + GET_ALL_PRODUCTS)
                 // Add user details
                 .with(user(userDetails)))
                 // Status should be 200
@@ -75,7 +75,7 @@ public class ProductEndpointIntegrationTestIT {
 
     @Test
     public void test_get_product_by_id_unauthrized() throws Exception {
-        mvc.perform(get(BASE_URL + GET_BY_ID, 3))
+        mvc.perform(get(BASE_URI + GET_BY_ID, 3))
                 // Status should be 401
                 .andExpect(status().isUnauthorized());
     }
@@ -84,7 +84,7 @@ public class ProductEndpointIntegrationTestIT {
     public void test_get_product_by_id() throws Exception {
         // UserDetails userDetails =
         // userDetailsService.loadUserByUsername("user");
-        mvc.perform(get(BASE_URL + GET_BY_ID, 3)
+        mvc.perform(get(BASE_URI + GET_BY_ID, 3)
                 // Specify user
                 .with(user("user")))
                 // Status should be 200
@@ -96,7 +96,7 @@ public class ProductEndpointIntegrationTestIT {
     public void test_get_product_by_invalid_id() throws Exception {
         // UserDetails userDetails =
         // userDetailsService.loadUserByUsername("user");
-        MvcResult result = mvc.perform(get(BASE_URL + GET_BY_ID, -1)
+        MvcResult result = mvc.perform(get(BASE_URI + GET_BY_ID, -1)
                 // Specify user
                 .with(user("user")))
                 // Status should be 200

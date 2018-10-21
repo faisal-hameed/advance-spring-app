@@ -1,4 +1,4 @@
-package pk.habsoft.demo.estore;
+package pk.habsoft.demo.estore.core;
 
 public class EResponse<T> {
 

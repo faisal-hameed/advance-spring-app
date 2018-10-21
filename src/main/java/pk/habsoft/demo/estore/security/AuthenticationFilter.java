@@ -24,7 +24,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Strings;
 
-import pk.habsoft.demo.estore.controller.Endpoints;
+import pk.habsoft.demo.estore.core.Endpoints;
 import pk.habsoft.demo.estore.dto.LoginRequest;
 
 public class AuthenticationFilter extends OncePerRequestFilter {
@@ -72,6 +72,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
             chain.doFilter(request, response);
 
         } catch (AuthenticationException e) {
+            e.printStackTrace();
             LOGGER.error("AuthenticationException in AuthenticationFilter : " + e.getMessage());
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
         } finally {
@@ -110,8 +111,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         UsernamePasswordAuthenticationToken requestAuthentication = new UsernamePasswordAuthenticationToken(
                 loginReq.getUser(), loginReq.getPassword());
 
-        UsernamePasswordAuthenticationToken resultOfAuthentication = (UsernamePasswordAuthenticationToken) tryToAuthenticate(
-                requestAuthentication);
+        Authentication resultOfAuthentication = (Authentication) tryToAuthenticate(requestAuthentication);
 
         // Reload password post-security so we can generate token
         final String token = resultOfAuthentication.getDetails().toString();
@@ -140,7 +140,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
     }
 
     private boolean postToAuthenticate(HttpServletRequest httpRequest, String resourcePath) {
-        return (Endpoints.CONTEXT_PATH + Endpoints.Auth.BASE_URL + Endpoints.Auth.LOGIN).equalsIgnoreCase(resourcePath)
+        return (Endpoints.CONTEXT_PATH + Endpoints.Auth.BASE_URI + Endpoints.Auth.LOGIN).equalsIgnoreCase(resourcePath)
                 && HttpMethod.POST.matches(httpRequest.getMethod());
     }
 }
